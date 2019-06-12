@@ -21,15 +21,5 @@ class Solution:
                     r -= 1
         return result
 #2.
-class Solution:
-    def isPalindrome(self, head: ListNode) -> bool:
-        if head == None or head.next == None: 
-            return True 
-        target = [] 
-        while head: 
-            target.append(head.val) 
-            head=head.next 
-            p = (len(target)-1)//2+1 
-            q = (len(target))//2 
-        return target[0:p]==target[q:len(target)][::-1]
+
 #3.
