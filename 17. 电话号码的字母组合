@@ -1,0 +1,50 @@
+#1.
+class Solution(object):
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        if len(digits) == 0:
+            return []
+        
+        digit_map = {
+            0:'0',
+            1:'1',
+            2:'abc',
+            3:'def',
+            4:'ghi',
+            5:'jkl',
+            6:'mno',
+            7:'pqrs',
+            8:'tuv',
+            9:'wxyz'
+        }
+        
+        result = [""]
+        
+        for digit in digits:
+            tmp_list = []
+            for ch in digit_map[int(digit)]:
+                for str in result:
+                    tmp_list.append(str + ch)
+            result = tmp_list
+        return result
+#2.
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        m = {
+            '2': list('abc'),
+            '3': list('def'),
+            '4': list('ghi'),
+            '5': list('jkl'),
+            '6': list('mno'),
+            '7': list('pqrs'),
+            '8': list('tuv'),
+            '9': list('wxyz'),
+            }
+        if not digits: return []
+        ls1 = ['']
+        for i in digits:
+            ls1 = [x + y for x in ls1 for y in m[i]]
+        return ls1
