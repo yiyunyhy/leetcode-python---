@@ -1,0 +1,17 @@
+#1.
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+         
+        kmaxs = [float('-inf')]*k
+        for i in range(len(nums)):
+            j = 0
+            while j< k:
+                if nums[i] > kmaxs[j]:
+                    kmaxs[j+1:] = kmaxs[j:k-1]
+                    kmaxs[j] = nums[i]
+                    break
+                else:
+                    j += 1
+        return kmaxs[k-1]
+
+#2.
