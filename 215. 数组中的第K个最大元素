@@ -15,3 +15,30 @@ class Solution:
         return kmaxs[k-1]
 
 #2.
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        for i in range(0, len(nums)+1):
+            return nums[-k]
+#3.
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        def partition(nums, l, r):
+            pivot = nums[r]
+            i = l - 1
+            for j in range(l,r):
+                if nums[j] >= pivot:
+                    i += 1
+                    nums[i], nums[j] = nums[j], nums[i]
+            nums[i+1], nums[r] = nums[r], nums[i+1]
+            return i+1
+        l = 0
+        r = len(nums) - 1
+        while True:
+            pivot_index = partition(nums, l, r)
+            if pivot_index == k - 1:
+                return nums[k -1]
+            elif pivot_index < k-1:
+                l = pivot_index + 1
+            else:
+                r = pivot_index - 1
